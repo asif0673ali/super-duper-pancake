@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sectionio-action
+  labels:
+    app: sectionio-action
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sectionio-action
+  template:
+    metadata:
+      labels:
+        app: sectionio-action
+    spec:
+      containers:
+      - name: sectionio-action
+        image: ghcr.io/${IMAGE_NAME}:main
+        # command: [ "/usr/bin/xray", "run", "-c", "/etc/xray/server.json" ]
+        volumeMounts:
+          - name: config-volume
+            mountPath: /etc/xray/
+        env:
+          - name: UUID
+            valueFrom:
+              configMapKeyRef:
+                name: server-config
+                key: UUID
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "200Mi"
+            cpu: "200m"
+          limits:
+            memory: "200Mi"
+            cpu: "200m"
+        ports:
+        - containerPort: 80
+      volumes:
+        - name: config-volume
+          configMap:
+            name: server-config
