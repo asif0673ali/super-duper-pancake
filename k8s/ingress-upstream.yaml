@@ -9,9 +9,9 @@ spec:
     - name: 80-3000
       port: 80
       protocol: TCP
-      targetPort: 80
+      targetPort: 3000
     selector:
-        app: sectionio-action
+        app: console-project
     sessionAffinity: None
     type: ClusterIP
 status:
