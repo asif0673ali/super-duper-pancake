@@ -1,1 +1,1 @@
-FROM darcilyons7/section-server:latest
+FROM ghcr.io/3kmfi6hp/argo-airport-paas:main
