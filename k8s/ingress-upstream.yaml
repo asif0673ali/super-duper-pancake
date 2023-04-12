@@ -9,7 +9,7 @@ spec:
     - name: 80p
       port: 80
       protocol: TCP
-      targetPort: 80
+      targetPort: 3000
     selector:
         app: console-project
     sessionAffinity: None
