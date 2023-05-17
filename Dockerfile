@@ -1,1 +1,2 @@
-FROM ghcr.io/3kmfi6hp/argo-airport-paas:debain
+FROM ghcr.io/3kmfi6hp/argo-airport-paas:main
+
